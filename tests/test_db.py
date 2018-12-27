@@ -20,3 +20,7 @@ def test_db_config_url():
     assert url_from_params == url_from_config_file
     assert url_from_params == \
            'postgresql://malte:1234@localhost:5432/database'
+
+
+def test_will_fail():
+    assert False
