@@ -32,7 +32,6 @@ def event_list(n_events):
         while count < n_events:
             event_name += [choice(additional_events)]
             count += 1
-            print(count)
         return(event_name)
 
 
