@@ -1,0 +1,14 @@
+connection:
+  dialect: postgresql
+  user: pgdocker
+  password: docker
+  host: localhost
+  port: 5432
+  database: demo
+
+naming:
+  columns:
+    user_id: user_id
+    event_name: event_name
+    timestamp: event_time
+  table: user_activity
