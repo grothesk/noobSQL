@@ -1,25 +1,25 @@
 import os
-from noobSQL.utils.db import db_config_url
+
+from noobSQL.utils.db import Connection, Naming
 
 
 HERE = os.path.dirname(__file__)
+YML = 'test.yml'
 
 
-def test_db_config_url():
-    db_params = dict(dialect='postgresql',
-                     user='malte',
-                     password='1234',
-                     host='localhost',
-                     port='5432',
-                     database='database')
+def test_connection():
+    connection = Connection.from_yaml(os.path.join(HERE, YML))
+    assert connection.dialect == 'postgresql'
+    assert connection.user == 'pgdocker'
+    assert connection.password == 'docker'
+    assert connection.host == 'localhost'
+    assert connection.port == 5432
+    assert connection.database == 'demo'
 
-    url_from_params = db_config_url(db_params)
-    url_from_config_file = db_config_url(os.path.join(HERE, 'test_db.ini'),
-                                         'test_config')
 
-    assert url_from_params == url_from_config_file
-    assert url_from_params == \
-           'postgresql://malte:1234@localhost:5432/database'
+def test_naming():
+    naming = Naming.from_yaml(os.path.join(HERE, YML))
+    assert True
 
 
 def test_will_not_fail():
